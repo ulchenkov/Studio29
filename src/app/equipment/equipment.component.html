@@ -1,7 +1,33 @@
 <h3>Equipment</h3>
-<ul>
-  <li>Habitat dome</li>
-  <li>Drones</li>
-  <li>Food containers</li>
-  <li>Oxygen tanks</li>
+<ul *ngIf="equipments.length > 0; else emptyList">
+  <li *ngFor="let equipment of equipments">
+    <div class="list-item" (click)="editing = equipment" *ngIf="editing !== equipment; else edit">
+      <span class="left">
+        {{equipment}}
+      </span>
+      <span class="right">
+        <button (click)="removeItem(equipment)">remove</button>
+      </span>
+    </div>
+    <ng-template #edit>
+      <div class="list-item">
+        <div class="left">
+          <input #newEquipment (keyup.enter)="editItem(equipment, newEquipment.value);" type="text" [value]="equipment">
+        </div>
+        <div class="right">
+          <button (click)="editItem(equipment, newEquipment.value)">save</button>
+          <button (click)="editing = '';">cancel</button>
+        </div>
+      </div>
+    </ng-template>
+  </li>
 </ul>
+
+<div class="add-new">
+  <input #newItem (keyup.enter)="addItem(newItem.value); newItem.value='';" type="text" placeholder="New equipment...">
+  <button class="add-button" (click)="addItem(newItem.value); newItem.value='';">Add</button>
+</div>
+
+<ng-template #emptyList>
+  <p class="center"> - List is empty -</p>
+</ng-template>

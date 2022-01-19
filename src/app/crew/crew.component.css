@@ -1,8 +1,33 @@
-div {
-    border-top: 2px double grey;
-    padding: 5px;
-}
-
 h3 {
     text-align: center;
+}
+
+.list-item {
+    padding: 1px;
+    margin: 1px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.add-new {
+    border-top: 2px double grey;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.add-button {
+    margin-left: 15px;
 }

@@ -1,6 +1,33 @@
 <h3>Experiments</h3>
-<ul>
-  <li>Mars soil sample</li>
-  <li>Plant growth in habitat</li>
-  <li>Human bone density</li>
+<ul *ngIf="experements.length > 0; else emptyList">
+  <li *ngFor="let experiment of experements">
+    <div class="list-item" (click)="editing = experiment" *ngIf="editing !== experiment; else edit">
+      <span class="left">
+        {{experiment}}
+      </span>
+      <span class="right">
+        <button (click)="removeItem(experiment)">remove</button>
+      </span>
+    </div>
+    <ng-template #edit>
+      <div class="list-item">
+        <div class="left">
+          <input #newExperiment (keyup.enter)="editItem(experiment, newExperiment.value);" type="text" [value]="experiment">
+        </div>
+        <div class="right">
+          <button (click)="editItem(experiment, newExperiment.value)">save</button>
+          <button (click)="editing = '';">cancel</button>
+        </div>
+      </div>
+    </ng-template>
+  </li>
 </ul>
+
+<div class="add-new">
+  <input #newItem (keyup.enter)="addItem(newItem.value); newItem.value='';" type="text" placeholder="New experiment...">
+  <button class="add-button" (click)="addItem(newItem.value); newItem.value='';">Add</button>
+</div>
+
+<ng-template #emptyList>
+  <p class="center"> - List is empty -</p>
+</ng-template>

@@ -1,23 +1,41 @@
 <h3>Crew</h3>
-<ul>
+<ul *ngIf="crew.length > 0; else emptyList">
   <li *ngFor="let member of crew">
-    <span (click)="editingName = member.name;" *ngIf="editingName !== member.name; else editName">{{member.name}}
-      <span *ngIf="member.firstMission"> - 1st</span>
-      <button (click)="removeMember(member)">remove</button>
-    </span>
+    <div class="list-item" (click)="editingName = member.name;" *ngIf="editingName !== member.name; else editName">
+      <span class="left">
+        {{member.name}}
+        <span *ngIf="member.firstMission"> - 1st</span>
+      </span>
+      <span class="right">
+        <button (click)="removeMember(member)">remove</button>
+      </span>
+    </div>
     <ng-template #editName>
-      <input #newName (keyup.enter)="changeName(member, newName.value);" type="text" value="{{member.name}}">
-      <button (click)="changeName(member, newName.value);">save</button>
-      <button (click)="editingName=''">cancel</button>
+      <div  class="list-item">
+        <span class="left">
+          <input #newName (keyup.enter)="changeName(member, newName.value);" type="text" value="{{member.name}}">
+        </span>
+        <span class="right">
+          <button (click)="changeName(member, newName.value);">save</button>
+          <button (click)="editingName=''">cancel</button>
+        </span>
+      </div>
     </ng-template>
   </li>
 </ul>
+
+<div class="add-new">
+  <span>
+    <input #name (keyup.enter)="addMember(name.value, isFirstMission.checked); name.value='';" placeholder="New member...">
+    <button class="add-button" (click)="addMember(name.value, isFirstMission.checked); name.value='';">Add</button>  
+  </span>
+</div>
 <div>
-  <span>Add a new member: </span><br>
-  <input #name (keyup.enter)="addMember(name.value, isFirstMission.checked); name.value='';" type="text">
-  <br/>
   <label> First mission 
     <input #isFirstMission type="checkbox">
   </label>
-  <button (click)="addMember(name.value, isFirstMission.checked); name.value='';">Add</button>
 </div>
+
+<ng-template #emptyList>
+  <p class="center"> - List is empty -</p>
+</ng-template>
