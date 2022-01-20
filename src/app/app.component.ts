@@ -9,4 +9,9 @@ export class AppComponent {
   title = 'mission-planning-dashboard';
   editingRocket: boolean = false;
   editingMission: boolean = false;
+
+  // ******************************
+  // **** variable to recieve value from child ****
+  // ******************************
+  myParentVar: number;
 }

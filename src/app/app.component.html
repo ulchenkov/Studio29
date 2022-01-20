@@ -1,6 +1,15 @@
-<app-header></app-header>
+
+<!--
+// ******************************
+// **** connect parent variable to child variable ****
+// ******************************
+-->
+<app-header (myVar)="myParentVar = $event"></app-header>
+
+
 <div class="box">
   <app-crew></app-crew>
   <app-equipment></app-equipment>
   <app-experiments></app-experiments>
 </div>
+<p> {{myParentVar}}</p>
