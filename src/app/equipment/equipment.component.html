@@ -5,9 +5,9 @@
             <!-- "Add to Cargo Hold" button goes here. -->
             <button 
                 (click)="addItem(item)"
-                [disabled]="(cargoHold.length === maxItems) || item.mass + cargoMass >= maximumAllowedMass || getItemQuantityInCargoHold(item) > 1"
+                [disabled]="(cargoHold.length === maxItems) || item.mass + cargoMass > maximumAllowedMass || getItemQuantityInCargoHold(item) > 1"
                 [title]="getItemQuantityInCargoHold(item) > 1 ? 'Only two of the each item are allowed in the cargo hold' : 'Add item'"
-                [class.active-button]="(cargoHold.length < maxItems) && item.mass + cargoMass < maximumAllowedMass && getItemQuantityInCargoHold(item) < 2"
+                [class.active-button]="(cargoHold.length < maxItems) && item.mass + cargoMass <= maximumAllowedMass && getItemQuantityInCargoHold(item) < 2"
                 >Add to Cargo Hold</button>
             {{item.name}}, {{item.mass}} kg ({{getItemQuantityInCargoHold(item)}})
         </li>
@@ -19,13 +19,21 @@
 <div class = "displayBox">
     <h3>Cargo Hold: {{cargoHold.length}}/{{maxItems}} Spots Filled</h3>
     <ol>
-        <li *ngFor="let equipment of cargoHold">
-            <button class="active-button" (click)="cargoHold.splice(cargoHold.indexOf(equipment), 1)">Remove from Cargo Hold</button>
+        <li *ngFor="let equipment of cargoHold; let i=index;">
+            <button class="active-button" (click)="removeItem(i)">Remove</button>
             {{equipment.name}}</li>
     </ol>
-    <p>Mass in Hold: {{cargoMass}} kg</p>
-    <p [class.nearMaxMass]="isNearMaxMass">Mass Budget Remaining: {{maximumAllowedMass - cargoMass}} kg</p>
+    <div class="cargo-info">
+        <p>
+            Mass in Hold: <strong>{{cargoMass}} kg</strong> <br>
+            <span [class.nearMaxMass]="isNearMaxMass">
+                Mass Budget Remaining: <strong>{{maximumAllowedMass - cargoMass}} kg </strong>
+            </span>
+        </p>
+    </div>
     <!-- Add the "Empty Hold" button here. -->
-    <button (click)="cargoHold=[];cargoMass=0;isNearMaxMass=false;">Empty Hold</button>
+    <div class="right">
+        <button (click)="cargoHold=[];cargoMass=0;isNearMaxMass=false;">Empty Hold</button>
+    </div>
 </div>
 

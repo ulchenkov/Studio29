@@ -1,5 +1,9 @@
+#experiments-list:hover {
+    cursor: pointer;
+}
+
 .displayBox {
-    height: 380px;
+    min-height: 245px;
     width: auto;
     border: 2px dotted skyblue;
     border-radius: 5px;
@@ -11,4 +15,11 @@ h3 {
     background-color: skyblue;
     padding: 5px;
     border-radius: 5px;
+}
+
+.selected {
+    color: grey;
+}
+.completed {
+    color: green;
 }

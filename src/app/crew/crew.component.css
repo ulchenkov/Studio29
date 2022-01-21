@@ -3,7 +3,7 @@ li:hover {
 }
 
 .displayBox {
-    height: 380px;
+    min-height: 245px;
     width: auto;
     border: 2px dotted skyblue;
     border-radius: 5px;
@@ -15,6 +15,7 @@ img {
     height: 100px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0px;
     display: block;
 }
 
@@ -28,4 +29,21 @@ h3 {
 /* Add a 'selected' class here to style selected astronaut names a different color. */
 .selected {
     color: grey;
+}
+p {
+    text-align: center;
+    margin: 0px;
+}
+
+strong {
+    display: block;
+    text-align: center;
+    margin: 0px;
+}
+
+.member-info {
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    padding: 6px;
+    margin: 3px;
 }

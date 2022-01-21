@@ -1,7 +1,23 @@
 <div class="displayBox">
     <h3>Possible Experiments</h3>
     <ul>
-      <li *ngFor="let experiment of experiments">{{experiment}}</li>
+      <li id="experiments-list"
+        *ngFor="let experiment of experiments" 
+        (click)="addExperiment(experiment)"
+        [class.selected]="spaceExperiments.includes(experiment)"
+        >
+          {{experiment}}
+      </li>
     </ul>
 </div>
 <hr>
+<div class="displayBox">
+  <h3>Mission Experiments List: 
+    <span [class.completed]="spaceExperiments.length > 2">
+      {{spaceExperiments.length}}/{{experimentMaxQuantity}} selected
+    </span>
+  </h3>
+  <ol>
+    <li *ngFor="let experiment of spaceExperiments">{{experiment}}</li>
+  </ol>
+</div>

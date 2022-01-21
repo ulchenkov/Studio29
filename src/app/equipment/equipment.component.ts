@@ -36,6 +36,11 @@ export class EquipmentComponent implements OnInit {
      return this.isNearMaxMass;
    }
 
+   removeItem(index: number): void {
+     this.cargoMass -= this.cargoHold[index].mass;
+     this.cargoHold.splice(index, 1);
+   }
+
    getItemQuantityInCargoHold(item: Equipment) {
      let quantity = 0;
      this.cargoHold.forEach((itemInHold)=> {
