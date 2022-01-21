@@ -35,6 +35,16 @@ export class EquipmentComponent implements OnInit {
      this.isNearMaxMass = this.maximumAllowedMass - this.cargoMass <= 200;
      return this.isNearMaxMass;
    }
+
+   getItemQuantityInCargoHold(item: Equipment) {
+     let quantity = 0;
+     this.cargoHold.forEach((itemInHold)=> {
+       if(item === itemInHold) {
+         quantity++;
+       }
+     })
+     return quantity;
+   }
 }
 
 class Equipment {

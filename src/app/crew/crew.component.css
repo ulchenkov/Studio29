@@ -3,8 +3,11 @@ li:hover {
 }
 
 .displayBox {
-    height: 275px;
+    height: 380px;
     width: auto;
+    border: 2px dotted skyblue;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 img {
@@ -17,6 +20,9 @@ img {
 
 h3 {
     text-align: center;
+    background-color: skyblue;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 /* Add a 'selected' class here to style selected astronaut names a different color. */

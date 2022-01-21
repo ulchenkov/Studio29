@@ -1,8 +1,14 @@
 .displayBox {
-    height: 275px;
+    height: 380px;
     width: auto;
+    border: 2px dotted skyblue;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 h3 {
     text-align: center;
+    background-color: skyblue;
+    padding: 5px;
+    border-radius: 5px;
 }
