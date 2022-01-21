@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -12,20 +12,14 @@ export class HeaderComponent implements OnInit {
   editingRocket: boolean = false;
   editingMission: boolean = false;
 
-  // ******************************
-  // **** pass value to parent ****
-  // ******************************
-  @Output() myVar = new EventEmitter<number>();
+
     
   constructor() { 
     
   }
 
   ngOnInit() {
-    // ******************************
-    // **** pass value to parent ****
-    // ******************************
-    this.myVar.emit(777);
+  
   }
 
   updateMission(updatedName: string) {
@@ -37,10 +31,7 @@ export class HeaderComponent implements OnInit {
     this.rocketName = updatedName;
     this.editingRocket = false;
 
-    // ******************************
-    // **** pass value to parent ****
-    // ******************************
-    this.myVar.emit(666);
+  
   }
 
 

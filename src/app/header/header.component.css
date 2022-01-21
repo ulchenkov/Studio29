@@ -11,3 +11,9 @@ h1 {
     text-align: center;
     text-decoration: underline;
 }
+
+.container {
+    background-color: coral;
+    border-radius: 10px;
+    margin: 10px;
+}
